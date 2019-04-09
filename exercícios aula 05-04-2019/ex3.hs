@@ -1,4 +1,8 @@
-acess :: (a, b, c) -> a
+fn :: Int -> Int -> Int
+fn x y = 
+    if x > y then x
+    else y
+
 type Musica = (String, Int, Int)
 
 musicas :: [Musica]
@@ -11,6 +15,10 @@ musicas = [ ("Aquele Abraco", 1, 100),
     ("Nosso Sonho", 4, 150),
     ("Quero te Encontrar", 4, 100) ]
 
-acess (a, b, c)  = a
-result = map (\x -> acess x) musicas
+listaAux :: [Int]
+listaAux = map (\(_, _, c) -> c) musicas
+
+result :: Int
+result = foldr fn 0 listaAux
+
 main = print result
